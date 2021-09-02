@@ -117,6 +117,7 @@ exports.findNearByUser = async (req, res)=>{
   } else {
     return res.send({ error: 'I parametri sono obbligatori'})
   }
+  
    /* User.find({
         point: {
           $near: {
