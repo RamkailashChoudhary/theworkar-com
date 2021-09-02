@@ -36,6 +36,7 @@ exports.sendNotification = (req, res)=>{
     });
 }
 
+
 exports.findUserNotificationHistoryByVenderId = (req , res)=> {
 
   VenderNotificationHistory.find({venderId : req.params.venderId},function(err, users){
