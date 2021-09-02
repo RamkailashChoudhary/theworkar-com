@@ -94,6 +94,7 @@ exports.findNearByUser = async (req, res)=>{
   }).catch(error=>{
     res.status(400).send(error);
   });*/
+
   if (lat && lng && dist) {
     User.find({
       point: {
