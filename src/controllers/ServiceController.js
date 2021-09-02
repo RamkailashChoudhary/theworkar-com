@@ -6,4 +6,6 @@ exports.findAllServices = (req,res) => {
         res.send(user);
     });
     console.log(mServices);
+
+    
 }
