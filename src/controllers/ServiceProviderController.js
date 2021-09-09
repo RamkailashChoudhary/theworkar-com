@@ -15,25 +15,32 @@ const Appointment = require('../models/Appointment');
 exports.save = async (req, res) => {
 
   signale.success('Inside ServiceProviderController SAVE() method');
-  ServiceProviderUser.create({
-    name: req.body.name,
-    address: req.body.address,
-    city: req.body.city,
-    phoneNo: req.body.phoneNo,
-    password: req.body.password,
-    category: req.body.category,
-    point: {
-      type: 'Point',
-      coordinates: [Number(req.body.lng), Number(req.body.lat)]
-    }
-  },
-    function (err, user) {
-      console.log('Error msg :' + err);
-      if (err) return res.status(500).json(BaseResponse.error('Try with different user and after some time ', res.statusCode));
-      const eWallet = new VenderWallet({ 'userAmount': 20, 'operation': 'DEPOSIT', 'serviceProviderUser': user._id.toString() });
-      eWallet.save();
-      res.status(200).send(user)
-    });
+  var result = payloadChecker.validator(req.body, PayloadSchema.venderPayloadValidation, ["name", "address","city","phoneNo","password","category","lng","lat","role"], false);
+   if(result.success){
+        ServiceProviderUser.create({
+            name: req.body.name,
+            address: req.body.address,
+            city: req.body.city,
+            phoneNo: req.body.phoneNo,
+            password: req.body.password,
+            category: req.body.category,
+            role: req.body.role,
+            point: {
+              type: 'Point',
+              coordinates: [Number(req.body.lng), Number(req.body.lat)]
+            }
+          },
+            function (err, user) {
+              console.log('Error msg :' + err);
+              if (err) return res.status(500).json(BaseResponse.error('Try with different user and after some time ', res.statusCode));
+              const eWallet = new VenderWallet({ 'userAmount': 20, 'operation': 'DEPOSIT', 'serviceProviderUser': user._id.toString() });
+              eWallet.save();
+              res.status(200).send(user)
+            });
+      }else{
+        signale.error('Inside ServiceProviderController SAVE() validationFailed');
+        res.status(404).json(BaseResponse.error(result.response.errorMessage, res.statusCode));
+      }
 }
 
 exports.serviceProviderLoginData = async (req, res) => {
@@ -158,4 +165,11 @@ exports.notificationAcceptOrReject = async (req, res) => {
       //
     });
  // Appointment.findOne({ "serviceProviderUser": req.query.venderId });
+
+
+ exports.addAppoinmentAdminPortal = (req, res) => {
+    signale.success('Inside ServiceProviderController addAppoinmentAdminPortal() method :');
+
+  }
+ 
 }

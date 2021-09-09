@@ -59,7 +59,6 @@ exports.userLoginData = async (req, res)=>{
 exports.updateUserData = async (req, res)=>{
 
    signale.success('Inside UserController updateUserData() method :'+req.params.id);
-   // res.status(200).send("Data updated successfuly");
     if(req.params.id){
        
       User.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, user) {

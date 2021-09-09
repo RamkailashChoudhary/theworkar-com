@@ -26,9 +26,9 @@ app.use(express.json());
 //connectDB();
 
 app.use('/api/v1/theworkar/',routersObj);
-//localDB URL => mongodb://localhost:27017/theworkardb
-//Cloud URL => mongodb+srv://theworkardb:theworkardb@theworkardb-cluster.pmuo5.mongodb.net/theworkardb?retryWrites=true&w=majority
-mongoose.connect("mongodb+srv://theworkardb:theworkardb@theworkardb-cluster.pmuo5.mongodb.net/theworkardb?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true
+   //localDB URL => mongodb://localhost:27017/theworkardb
+   //Cloud URL => mongodb+srv://theworkardb:theworkardb@theworkardb-cluster.pmuo5.mongodb.net/theworkardb?retryWrites=true&w=majority
+mongoose.connect("mongodb://localhost:27017/theworkardb", { useNewUrlParser: true, useUnifiedTopology: true
 ,useFindAndModify: false, useCreateIndex: true }).then(() =>{
 
     app.listen(PORT, () =>{
