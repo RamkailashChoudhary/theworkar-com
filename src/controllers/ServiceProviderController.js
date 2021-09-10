@@ -166,10 +166,4 @@ exports.notificationAcceptOrReject = async (req, res) => {
     });
  // Appointment.findOne({ "serviceProviderUser": req.query.venderId });
 
-
- exports.addAppoinmentAdminPortal = (req, res) => {
-    signale.success('Inside ServiceProviderController addAppoinmentAdminPortal() method :');
-
-  }
- 
 }

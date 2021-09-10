@@ -4,6 +4,7 @@ const userController = require('../controllers/UserController');
 const serviceController = require('../controllers/ServiceController');
 const VerifyToken = require('../services/VerifyToken')
 const notificationCotroller = require('../controllers/VenderNotificationController');
+const appointmentController = require('../controllers/AppointmentController');
 const route = express.Router()
 
 
@@ -30,5 +31,10 @@ route.get('/services',VerifyToken, serviceController.findAllServices);
 route.post('/notification',notificationCotroller.sendNotification);
 route.get('/services-providers/notifications/:venderId',notificationCotroller.findUserNotificationHistoryByVenderId);
 
+
+//APPOINMENT END_POINTS
+route.get('/admin/appointments',appointmentController.findAllAppointmentList);
+route.post('/admin/appointments',appointmentController.adminCreateAppointment);
+route.get('/admin/appointments/nearByVender',appointmentController.findNearByVender);
 
 module.exports = route

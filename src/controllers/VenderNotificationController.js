@@ -7,7 +7,7 @@ const Appointment = require('../models/Appointment');
 
 exports.sendNotification = (req, res)=>{
 
-  signale.success('Inside VenderNotificationController SAVE() method');
+    signale.success('Inside VenderNotificationController SAVE() method');
     Appointment.create({
       userId: req.body.userId,
       category: req.body.category,

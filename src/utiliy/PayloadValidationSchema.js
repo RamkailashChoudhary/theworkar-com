@@ -26,3 +26,14 @@ exports.venderPayloadValidation = {
     "lat": 123.4,
     "role": ""
 }
+
+exports.adminCreateAppointmentPayloadValidation = {
+    "userName": "",
+    "userPhone": 12344,
+    "category": "",
+    "scheduleDate": "",
+    "address": "",
+    "lng": 12.45345,
+    "lat": 13.543534,
+    "status": ""
+}
