@@ -163,9 +163,7 @@ exports.notificationAcceptOrReject = async (req, res) => {
         signale.success('NOT FOUND :'+appointment);
         res.status(200).json(BaseResponse.success("OK", {'data':'ALREADY ACCEPTED'}, res.statusCode));
       }
-      //
     });
- // Appointment.findOne({ "serviceProviderUser": req.query.venderId });
 }
 
 exports.venderHomeData = async (req, res) =>{
@@ -200,7 +198,8 @@ exports.venderHomeData = async (req, res) =>{
         }).sort({'createdAt': -1});
       });
     }else {
-      res.status(400).send('Please provide required parameters')
+      signale.success("VenderHomeData screen Please provide the required field");
+      res.status(400).json(BaseResponse.error('VenderHomeData screen Please provide the required field',res.statusCode))
     }
 }
 
@@ -216,5 +215,8 @@ exports.appointmentScreen = async (req, res) => {
       signale.success("PRINT LIST "+notificationList);
       res.status(200).json(BaseResponse.success("OK", notificationList, res.statusCode));
     }).sort({'createdAt': -1});
+  }else{
+    signale.success("Appointment screen Please provide the required field:");
+    res.status(400).json(BaseResponse.error('Appointment screen Please provide the required field',res.statusCode))
   }
 }
