@@ -16,6 +16,7 @@ const schema = mongoose.Schema({
     category: String,
     address: String,
     point: Object,
+    scheduleDate: Date,
 },{
     timestamps: true,
 })

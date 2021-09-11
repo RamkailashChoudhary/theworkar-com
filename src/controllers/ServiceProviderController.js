@@ -4,13 +4,14 @@ const bcrypt = require('bcryptjs')
 const config = require('../config/config.json') // get config file
 const signale = require('signale')
 const VenderWallet = require('../models/VenderWallet');
-const { await } = require('signale');
+const { await, star } = require('signale');
 const BaseResponse = require('../utiliy/BaseResponse');
 const VenderNotification = require('../models/VenderNotificationHistory');
 const VenderCategory = require('../models/VenderCategory');
 var payloadChecker = require('payload-validator');
 const PayloadSchema = require('../utiliy/PayloadValidationSchema');
 const Appointment = require('../models/Appointment');
+const VenderNotificationHistory = require('../models/VenderNotificationHistory');
 
 exports.save = async (req, res) => {
 
@@ -165,5 +166,55 @@ exports.notificationAcceptOrReject = async (req, res) => {
       //
     });
  // Appointment.findOne({ "serviceProviderUser": req.query.venderId });
+}
 
+exports.venderHomeData = async (req, res) =>{
+
+    signale.success("PRINT ID :"+req.query.venderId);
+    if(req.query.venderId){
+      ServiceProviderUser.findById(req.query.venderId, { __v: 0, point: 0, createdAt:0 , updatedAt:0, _id:0 }, function (err, user) {
+        if (err) return res.status(500).send('Error on the server.')
+        if (!user) return res.status(404).json(BaseResponse.error("No user found.", res.statusCode));
+        
+        var start = new Date();
+        start.setHours(0,0,0,0);
+        //start.setDate(start.getDate() - 15);
+        signale.success("PRINT DATE :"+start);
+        VenderNotificationHistory.find({"venderId" : req.query.venderId,"createdAt":{$gte:start},"status":"ACCEPT"},{point : 0 ,updatedAt : 0, __v : 0},function(err, notificationList){
+          if (err) {
+            signale.error("Error msg :"+err);
+            return res.status(500).json(BaseResponse.error('Error on the server.',res.statusCode))
+          }
+          
+          signale.success("PRINT LIST "+notificationList);
+          VenderWallet.findOne({ "serviceProviderUser": req.query.venderId }, { _id: 0, operation: 0, __v: 0, serviceProviderUser: 0,createdAt:0 , updatedAt:0 }, function (err, eWallet) {
+            if (err) return res.status(500).send('Error on the server.')
+            
+            var response;
+            if(eWallet)
+             response = { user, notificationList,eAmount:eWallet.userAmount };
+            else
+            response = { user, notificationList,eAmount:0 };
+            res.status(200).json(BaseResponse.success("OK", response, res.statusCode));
+          });
+        }).sort({'createdAt': -1});
+      });
+    }else {
+      res.status(400).send('Please provide required parameters')
+    }
+}
+
+exports.appointmentScreen = async (req, res) => {
+
+  signale.success("Appointment screen :"+req.query.venderId);
+  if(req.query.venderId){
+    VenderNotificationHistory.find({"venderId" : req.query.venderId,},{point : 0 ,updatedAt : 0, __v : 0},function(err, notificationList){
+      if (err) {
+        signale.error("Error msg :"+err);
+        return res.status(500).json(BaseResponse.error('Error on the server.',res.statusCode))
+      }
+      signale.success("PRINT LIST "+notificationList);
+      res.status(200).json(BaseResponse.success("OK", notificationList, res.statusCode));
+    }).sort({'createdAt': -1});
+  }
 }

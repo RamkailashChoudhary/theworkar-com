@@ -18,6 +18,8 @@ route.post('/services-providers/categories',serviceProvider.saveCategory);
 route.post('/services-providers/updateWallet',serviceProvider.updateWalletAmount);
 route.get('/services-providers/wallet',serviceProvider.walletAmount);
 route.get('/services-providers/notification/accept',serviceProvider.notificationAcceptOrReject);
+route.get('/services-providers/home',serviceProvider.venderHomeData);
+route.get('/services-providers/appointment',serviceProvider.appointmentScreen);
 
 //USER END-POINTS
 route.post('/users/', userController.save);
