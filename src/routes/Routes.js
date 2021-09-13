@@ -20,6 +20,7 @@ route.get('/services-providers/wallet',serviceProvider.walletAmount);
 route.get('/services-providers/notification/accept',serviceProvider.notificationAcceptOrReject);
 route.get('/services-providers/home',serviceProvider.venderHomeData);
 route.get('/services-providers/appointment',serviceProvider.appointmentScreen);
+route.post('/services-providers/notificationToken',serviceProvider.updateVenderDeviceToken);
 
 //USER END-POINTS
 route.post('/users/', userController.save);
@@ -38,5 +39,6 @@ route.get('/services-providers/notifications/:venderId',notificationCotroller.fi
 route.get('/admin/appointments',appointmentController.findAllAppointmentList);
 route.post('/admin/appointments',appointmentController.adminCreateAppointment);
 route.get('/admin/appointments/nearByVender',appointmentController.findNearByVender);
+route.get('/admin/appointments/assignAppointment',appointmentController.assignAppointmentToVender);
 
 module.exports = route

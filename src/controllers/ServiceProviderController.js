@@ -220,3 +220,16 @@ exports.appointmentScreen = async (req, res) => {
     res.status(400).json(BaseResponse.error('Appointment screen Please provide the required field',res.statusCode))
   }
 }
+
+exports.updateVenderDeviceToken = async (req, res) => {
+
+  if(req.body._id && req.body.token){
+     ServiceProviderUser.findByIdAndUpdate(req.body._id,{$set: { 'deviceId': req.body.token}},function(err,data){
+       if (err) return res.status(500).json(BaseResponse.error('Error on the server. '+err,res.statusCode));
+       res.status(200).json(BaseResponse.success("OK",data,res.statusCode));
+     });
+  }else{
+   signale.success('Inside AppoinmentController updateVenderDeviceToken() method param missing');
+   return res.send({ error: 'I parametri sono obbligatori'})
+  }
+}
