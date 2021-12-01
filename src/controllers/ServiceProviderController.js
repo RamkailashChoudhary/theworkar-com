@@ -16,7 +16,7 @@ const VenderNotificationHistory = require('../models/VenderNotificationHistory')
 exports.save = async (req, res) => {
 
   signale.success('Inside ServiceProviderController SAVE() method');
-  var result = payloadChecker.validator(req.body, PayloadSchema.venderPayloadValidation, ["name", "address","city","phoneNo","password","category","lng","lat","role"], false);
+  var result = payloadChecker.validator(req.body, PayloadSchema.venderPayloadValidation, ["name", "address","city","phoneNo","password","category","lng","lat","role","categoryId"], false);
    if(result.success){
         ServiceProviderUser.create({
             name: req.body.name,
@@ -26,6 +26,7 @@ exports.save = async (req, res) => {
             password: req.body.password,
             category: req.body.category,
             role: req.body.role,
+            categoryId: req.body.categoryId,
             point: {
               type: 'Point',
               coordinates: [Number(req.body.lng), Number(req.body.lat)]

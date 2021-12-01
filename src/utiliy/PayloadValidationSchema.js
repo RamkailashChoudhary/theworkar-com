@@ -24,7 +24,8 @@ exports.venderPayloadValidation = {
     "category": "",
     "lng": 123.4,
     "lat": 123.4,
-    "role": ""
+    "role": "",
+    "categoryId": ""
 }
 
 exports.adminCreateAppointmentPayloadValidation = {
@@ -36,4 +37,14 @@ exports.adminCreateAppointmentPayloadValidation = {
     "lng": 12.45345,
     "lat": 13.543534,
     "status": ""
+}
+
+exports.nearByVenderPayloadValidation = {
+    
+        "lat":28.4595,
+      "lng":76.0266,
+      "distance":500000,
+      "role":"",
+      "category":""
+    
 }

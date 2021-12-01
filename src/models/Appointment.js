@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-
+const Role = require('./Role');
 const schema = mongoose.Schema({
     userId: String,
     userName: String,
@@ -10,7 +10,11 @@ const schema = mongoose.Schema({
     amount: Number,
     address: String,
     status: String,
-    point: Object
+    point: Object,
+    role: {
+        type: String,
+        default: Role.User
+    }
 },{
     timestamps: true,
 })

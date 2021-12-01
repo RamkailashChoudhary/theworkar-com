@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "theworkartech",
+  "private_key_id": "e9a60d60ba425bd873214cfcf09dea1771325d70",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQClvYvfdG9M6Re3\nf+PtZgCWNrIQjcauXbqhJash6EfYsUkZ9ZmQ/z/krOajQeonJJZaCu4FSucUwOBM\nAyDvi5nmInvERkPrzxyRbKWW2RpmiHH83Pccz9TB3mnMif2dkfOpwHRyrq4vYPVu\nCv5XH1q9D0Mci1J7eeJM7nVUtjduWDtNK1D70tuzf+dEqGu3F58WWej6Qj9GcpzZ\nqA6Ubs8caJHSMoIuauwgBe/oNr/xt1EqkZMye8wyEZv8Akd6v+AtKyUXM1FtBj/2\nrjUpxjYkWFNeOI57u778RLbmOMyBwlqhN5CDMyw8zwxTllCmEHw54wvwXUOeWoxa\njYXtoiebAgMBAAECggEAS4jzMkeyYe7pbCvRCOSv58XNqVWz8susvryYHb/q3osN\nsdMIxdhOmj1ib40e1fAKxcata6QTZJXyozHZ1NJetU+J8I3FbrbZYj2Nyg3vxkLx\nEDj0NiFR6Xkf5qQM/b8CuZ6Ic6vAnr8lm51PBQ25IOjPwTaNxNBrnnwe5RiWcqbu\na4pKCjTyWWTr7vLwbVH7Alog+OyHZE4lynaouidFT+NCpS1/Kg03+Mq7yFxU6eaF\nMhVsbEvRHR9JjcGmHTWrHTurLljBZxrRy9651Tyge5bW9zJICj7HNnjErqcidkuQ\nyYaS4b8gxQqYRRiWTWl24EmOrIYAri/5z9UUaeBcgQKBgQDn87NKGmv+Lb2waFs2\nCPMshE0Xn2a+0eSK2E2HtVz0D3Z4aeeGOyy2uY7PEF83VL5I22+RNFzJeCemrvOx\nsgvYlydyXCCekjpoqfqrwWFvu0QCFQcZXUnAakK6JSgWSgdCi6lrPcJHLT3Gykck\nt5z5D2IHnTqz5YVtR/BCzmYxSwKBgQC27IH0q9vNzN7LwgPqWw0Y4VbyLElhP+Ga\nWSbMh6UlJVnj2gvuwS9P2bShEuDZF+LtSbpPmOmD5qa8/1dwqfyJtDHo4erlmLHG\n/dfdBvigw7uIq/SKgft+62vLqgcjDsc0Sm1MP+dti3ERSjgRuKCGaHOnq8nBS5jz\n4FQzU3FA8QKBgApaMR1Uko9UoUu3TKLbwWayPPKZ9a78lTOxNbyh1pU5/3KeX2v5\nRiSdoYcSVv2UNa3wxUj4yk9fon1o/41lweuXy3XqMLaDFkJHm92AkwW2mPFy2M9D\n/5+r3nCKagCcqzhIHXag2gPtO/2cV5KG82WWTyzB0rXmv47CEDIbHiqDAoGBAJ0x\nNKQLI4IA8dxrR24W/HRLAKpvgEd/2+EFh5/vWO1I4aw57lMn0/5seRqJ3IrySeHb\nn61THChrBxIW4w9AJHI5VUJpEbBnvS3haaTYnsOYMAnMqwJznKl+qU2FOUjZJDo9\nUxtZNwkd8PYIr5Ia9GdMT0bhCyl+S1wXhIPuyr4hAoGBAMxXNuKsOsOhr9zRGtoR\njXyNitKDNFMWWh4mkncwWc+3PfZWIBsCZHEthX5Xe71BmHJzkIGqCxJvl2WIxINH\nXDCP7cb7PI0w/Ji2Kz0MiS+I89b3Po2wVZHHkPTxZk6In+EJkPwrskVOEYG23egc\nR7qdtCHG7AFHnR8N8TGeNFF1\n-----END PRIVATE KEY-----\n",
+  "client_email": "gcp-bucket02@theworkartech.iam.gserviceaccount.com",
+  "client_id": "114472839676945499230",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gcp-bucket02%40theworkartech.iam.gserviceaccount.com"
+}

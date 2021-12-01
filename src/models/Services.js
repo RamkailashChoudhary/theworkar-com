@@ -7,7 +7,10 @@ const schema = mongoose.Schema({
     },
 	address: String,
     city: String,
-    category: String
+    category: String,
+    price: Number,
+    imgUrl: String,
+    categoryId: String,
 },{
     timestamps: true,
 })

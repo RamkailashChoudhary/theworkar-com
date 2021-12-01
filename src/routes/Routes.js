@@ -5,6 +5,7 @@ const serviceController = require('../controllers/ServiceController');
 const VerifyToken = require('../services/VerifyToken')
 const notificationCotroller = require('../controllers/VenderNotificationController');
 const appointmentController = require('../controllers/AppointmentController');
+const imageUpload = require('../utiliy/ImageUpload');
 const route = express.Router()
 
 
@@ -28,6 +29,9 @@ route.get('/users',VerifyToken, userController.findNearByUser);
 route.post('/users/login',userController.userLoginData);
 route.put('/users/:id',VerifyToken, userController.updateUserData);
 route.get('/services',VerifyToken, serviceController.findAllServices);
+route.get('/users/homePage',userController.userHomePage);
+route.get('/users/categoryById',userController.categoryDataById);
+route.get('/users/isexist',userController.findUserBasedOnNumber);
 
 
 //NOTIFICATION END-POINTS
@@ -38,7 +42,11 @@ route.get('/services-providers/notifications/:venderId',notificationCotroller.fi
 //APPOINMENT END_POINTS
 route.get('/admin/appointments',appointmentController.findAllAppointmentList);
 route.post('/admin/appointments',appointmentController.adminCreateAppointment);
-route.get('/admin/appointments/nearByVender',appointmentController.findNearByVender);
-route.get('/admin/appointments/assignAppointment',appointmentController.assignAppointmentToVender);
+route.post('/admin/appointments/nearByVender',appointmentController.findNearByVender);
+route.post('/admin/appointments/assignAppointment',appointmentController.assignAppointmentToVender);
+
+
+//SERVICE END_POINTS
+route.post('/service/register',imageUpload.multer.single('image'),imageUpload.sendUploadToGCS, serviceController.registerService);
 
 module.exports = route

@@ -6,6 +6,7 @@ const signale = require('signale')
 const BaseResponse = require('../utiliy/BaseResponse');
 var payloadChecker = require('payload-validator');
 const PayloadSchema = require('../utiliy/PayloadValidationSchema');
+const VenderCategory = require('../models/VenderCategory');
 
 exports.save = async (req, res)=>{
    signale.success('Inside UserController SAVE() method');
@@ -148,3 +149,48 @@ exports.findNearByUser = async (req, res)=>{
             res.status(400).send(err);
         });  */
 }
+
+exports.findUserBasedOnNumber = async (req, res) =>{
+
+    signale.log("Query param :"+req.query.phoneNo);
+    User.findOne({ phoneNo: req.query.phoneNo},{ __v : 0,password: 0,createdAt: 0,updatedAt: 0}, function (err, user) {
+      if (err) {
+        signale.error("Error msg :"+err);
+        return res.status(500).json(BaseResponse.error('Error on the server.',res.statusCode))
+      }
+      if (!user) {
+        signale.error("Error msg :"+err);
+        return res.status(404).json(BaseResponse.error("No user found.", res.statusCode));
+      }
+
+      res.status(200).json(BaseResponse.success("OK", user, res.statusCode));
+    });
+}
+
+exports.userHomePage = async (req, res) =>{
+   signale.success('Inside UserController useHomeScreen() method :');
+
+   VenderCategory.find({}, { __v: 0 },function (err, categories) {
+
+    if (err) return res.status(500).send('Error on the server.');
+
+    if (!categories) return res.status(400).json(BaseResponse.success("No category found.", res.statusCode));
+    res.status(200).json(BaseResponse.success("OK", categories, res.statusCode));
+
+  });
+}
+
+exports.categoryDataById = async (req, res)=> {
+
+  signale.success('Inside categoryDataById useHomeScreen() method :'+req.query.id);
+  if(req.query.id){
+      VenderCategory.find({"parentId":req.query.id}, { __v: 0 },function (err, categories) {
+
+        if (err) return res.status(500).send('Error on the server.');
+
+        if (!categories) return res.status(400).json(BaseResponse.success("No category found.", res.statusCode));
+        res.status(200).json(BaseResponse.success("OK", categories, res.statusCode));
+      });
+    }
+}
+
